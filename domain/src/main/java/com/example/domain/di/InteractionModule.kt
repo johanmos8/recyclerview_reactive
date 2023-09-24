@@ -1,7 +1,7 @@
 package com.example.domain.di
 
-import com.example.domain.inspector.GetLatestMoviesUseCase
-import com.example.domain.inspector.GetLatestMoviesUseCaseImpl
+import com.example.domain.inspector.GetTopRatedMoviesUseCase
+import com.example.domain.inspector.GetTopRatedMoviesUseCaseImpl
 import com.example.domain.repository.MovieRepository
 import dagger.Module
 import dagger.Provides
@@ -12,8 +12,8 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object InteractionModule {
     @Provides
-    fun provideGetTvShowsUseCase(
+    fun provideGetTopRatedMoviesUseCase(
         movieRepository: MovieRepository
-    ): GetLatestMoviesUseCase = GetLatestMoviesUseCaseImpl(movieRepository)
+    ): GetTopRatedMoviesUseCase = GetTopRatedMoviesUseCaseImpl(movieRepository)
 
 }

@@ -5,10 +5,10 @@ import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class GetLatestMoviesUseCaseImpl @Inject constructor(
+class GetTopRatedMoviesUseCaseImpl @Inject constructor(
     private val movieRepository: MovieRepository
-) : GetLatestMoviesUseCase {
+) : GetTopRatedMoviesUseCase {
     override suspend operator fun invoke()= flow{
-        emitAll(movieRepository.getLatestMovies())
+        emitAll(movieRepository.getTopRatedMovies())
     }
 }

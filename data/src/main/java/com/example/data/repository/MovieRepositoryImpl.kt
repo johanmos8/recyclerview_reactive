@@ -12,11 +12,11 @@ import javax.inject.Inject
 class MovieRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : MovieRepository {
-    override suspend fun getLatestMovies(): Flow<Resource<List<Movie>>> {
+    override suspend fun getTopRatedMovies(): Flow<Resource<List<Movie>>> {
         return flow {
             emit(Resource.loading())
             try {
-                val response = apiService.getLatestMovies()
+                val response = apiService.getTopRatedMovies()
                 if (response.isSuccessful) {
                     response.body()?.result?.map { it.toDomain() }?.let {
                         emit(Resource.success(it))
@@ -25,7 +25,7 @@ class MovieRepositoryImpl @Inject constructor(
                     emit(Resource.success(emptyList()))
                 }
             } catch (e: Throwable) {
-                emit(Resource.error("An error ocurred", null))
+                emit(Resource.error("An error occurred", null))
             }
         }
     }
